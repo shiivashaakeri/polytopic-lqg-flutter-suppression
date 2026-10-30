@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tptool"
+version = "0.0.1"
+description = "Python port of the TP Tool MATLAB toolbox for Tensor Product model transformation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "BSD-3-Clause"}
+authors = [
+    {name = "Shiva Shakeri"},
+]
+keywords = ["LPV", "tensor product model", "polytopic", "control", "HOSVD"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.6"]
+test = ["pytest>=7.0"]
+lmi = ["cvxpy>=1.4"]
+dev = ["pytest>=7.0", "matplotlib>=3.6", "cvxpy>=1.4"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["tptool*"]
+exclude = ["tests*", "examples*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
